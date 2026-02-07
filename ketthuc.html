@@ -4,253 +4,298 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Kết Thúc</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root{
-    --bg1: #ff9a9e;
-    --bg2: #fad0c4;
-    --accent: #d63384;
-    --card-bg: rgba(255,255,255,0.28);
-    --text: #333;
-    --glass-border: rgba(255,255,255,0.5);
+  :root {
+    --bg-color1: #ff9a9e;
+    --bg-color2: #fad0c4;
+    --bg-color3: #fbc2eb;
+    --accent: #ff4d6d;
+    --primary-btn: linear-gradient(135deg, #ff4d6d 0%, #ff758c 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #3d3d3d;
+    --text-sub: #7d7d7d;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family: 'Quicksand', system-ui, sans-serif;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-    display:flex;align-items:center;justify-content:center;
-    min-height:100vh;overflow:hidden;color:var(--text);
-    position:relative;padding:20px;
-  }
-  .bg-grad {
-    position:fixed;inset: -20%;z-index:0;
-    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06), transparent 6%),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 6%);
-    animation: drift 12s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes drift { from{transform:translateY(0)} to{transform:translateY(-8%)} }
 
-  .card{
-    width:100%;max-width:560px;border-radius:28px;
-    padding:28px 26px;background:var(--card-bg);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border:1px solid var(--glass-border);
-    box-shadow: 0 14px 50px rgba(0,0,0,0.12);
-    position:relative;z-index:10;overflow:hidden;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
   }
-  .card::before{
-    content:"";position:absolute;inset:0;padding:2px;border-radius:30px;
-    background: linear-gradient(90deg, rgba(255,154,158,0.2), rgba(246,200,236,0.12));
-    -webkit-mask: linear-gradient(#000,#000) padding-box, linear-gradient(#000,#000);
-    pointer-events:none;
-  }
-  .top {
-    display:flex;align-items:center;gap:16px;margin-bottom:10px;
-  }
-  .avatar-box{
-    width:96px;height:96px;border-radius:50%;padding:6px;
-    background:rgba(255,255,255,0.5);overflow:hidden;
-    transform-origin:center;transition:transform .28s ease, box-shadow .28s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
-  .avatar{
-    width:100%;height:100%;border-radius:50%;
-    background-image: url('avatarnts.jpg');
-    background-size:cover;background-position:center;
-    transition: transform .28s ease;
-  }
-  .avatar-box:hover{ transform: scale(1.06); box-shadow: 0 16px 40px rgba(0,0,0,0.18) }
-  .avatar-box:hover .avatar{ transform: translateY(-4px) scale(1.02) }
-  h1{
-    font-family:'Dancing Script', cursive;font-size:30px;color:var(--accent);
-    margin:0;line-height:1;animation: heartbeat 1.6s infinite;
-  }
-  @keyframes heartbeat{
-    0%{transform:scale(1)}20%{transform:scale(1.06)}40%{transform:scale(1)}60%{transform:scale(1.02)}100%{transform:scale(1)}
-  }
-  .subtitle{ font-size:0.95rem;color:rgba(0,0,0,0.55); margin-top:6px }
 
-  .chat{ margin-top:16px;display:flex;justify-content:center; }
-  .bubble{
-    max-width:100%;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
-    padding:16px 18px;border-radius:18px;border:1px solid rgba(0,0,0,0.05);
-    position:relative;font-size:15px;color:#333;box-shadow:0 8px 18px rgba(0,0,0,0.06);
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  .bubble .dots{ display:inline-block;margin-left:4px;width:18px; }
-  .dot{ display:inline-block; width:5px;height:5px;border-radius:50%; margin:0 2px; opacity:.4;
-    animation: dotJump 1s infinite; background:var(--accent);
-  }
-  .dot:nth-child(2){ animation-delay: .15s }
-  .dot:nth-child(3){ animation-delay: .3s }
-  @keyframes dotJump{ 0%{transform:translateY(0)}50%{transform:translateY(-6px);opacity:1}100%{transform:translateY(0)} }
 
-  .btns{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center }
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:600;text-decoration:none;
-    cursor:pointer;border:0;outline:0;
+  .heart-bg {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    user-select: none;
+    pointer-events: none;
+    animation: floatUp 10s linear infinite;
+    z-index: 1;
   }
-  .btn-primary{
-    background: linear-gradient(90deg,#ff9a9e,#fecfef);color:#fff;box-shadow:0 8px 24px rgba(255,154,158,0.22);
-  }
-  .btn-secondary{
-    background:rgba(255,255,255,0.72); color:#444; border:1px solid rgba(255,255,255,0.6);
-  }
-  .author-info{ margin-top:18px;border-top:1px solid rgba(255,255,255,0.14);padding-top:12px;font-size:0.86rem;color:rgba(0,0,0,0.55) }
 
-  #particles{ position:fixed; inset:0; pointer-events:none; z-index:5 }
-  .burst{
-    position:fixed; width:12px;height:12px;border-radius:50%;
-    pointer-events:none;opacity:1; transform:translate(-50%,-50%) scale(0.9);
-    animation: burstAnim .8s forwards;
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
   }
-  @keyframes burstAnim{
-    0%{transform:translate(-50%,-50%) scale(0.7);opacity:1}
-    100%{transform:translate(-50%,-50%) scale(8);opacity:0}
-  }
-  .trail{
-    position:fixed; width:18px;height:18px;pointer-events:none;font-size:16px;
-    transform:translate(-50%,-50%);opacity:.95;animation: trailFade 0.9s forwards;
-    z-index:9999;
-  }
-  @keyframes trailFade{ 0%{opacity:1;transform:translate(-50%,-50%) translateY(0)}100%{opacity:0;transform:translate(-50%,-50%) translateY(-26px) scale(.6)} }
 
-  @media(max-width:520px){
-    h1{ font-size:34px }
-    .avatar-box{ width:86px;height:86px }
+  .card {
+    width: 90%;
+    max-width: 420px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 50px 30px 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease;
   }
+
+  .card:hover { transform: translateY(-5px); }
+
+  .avatar-wrapper {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .avatar-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 6px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: url('avatarnts.jpg') center/cover;
+    background-color: #eee;
+  }
+
+  .online-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: #4cd137;
+    border: 3px solid white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 209, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-style: italic;
+    color: var(--text-main);
+    margin: 20px 0 5px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .chat-bubble {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 30px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-weight: 600;
+    border: 1px solid rgba(255, 77, 109, 0.1);
+  }
+
+  .btns-group {
+    display: grid;
+    gap: 12px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary-btn);
+    color: white;
+    box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
+  }
+
+  .btn-outline {
+    background: white;
+    color: var(--text-main);
+    border: 1px solid #eee;
+  }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 0.75rem;
+  }
+
+  .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; display: inline-block; margin: 0 2px; animation: jump 0.6s infinite alternate; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes jump { from { transform: translateY(0); } to { transform: translateY(-6px); } }
 </style>
 </head>
 <body>
-  <div class="bg-grad"></div>
-  <div id="particles"></div>
 
-  <div class="card" role="main">
-    <div class="top">
-      <div class="avatar-box" id="avatarBox" title="Nhấn để xem bí mật">
-        <div class="avatar" id="avatar"></div>
-      </div>
-      <div style="flex:1; margin-left: 15px;">
-        <h1>Hết Rồi Em...</h1>
-        <div class="subtitle">Nhưng anh vẫn mong em ở lại một chút nữa 💌</div>
-      </div>
+<div id="heartContainer"></div>
+
+<div class="card">
+  <div class="avatar-wrapper">
+    <div class="avatar-box">
+      <div class="avatar"></div>
+      <div class="online-badge"></div>
     </div>
+  </div>
+  
+  <h1>Hết rồi em ơi...</h1>
+  <div class="subtitle">Hãy Xem Những Thông Tin Sau 💌</div>
 
-    <div class="chat">
-      <div class="bubble" id="chatBubble">
-        <span id="typedText"></span>
-        <span class="dots" id="dots">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </span>
-      </div>
-    </div>
-
-    <div class="btns">
-      <a href="profile.html" target="_blank" class="btn btn-primary"><i class="fa-solid fa-user"></i> Xem Profile Anh</a>
-      <a href="https://www.facebook.com/messages/t/nguyenthanhsang70" target="_blank" class="btn btn-secondary">
-        <i class="fa-brands fa-facebook-messenger"></i> Nhắn Messenger
-      </a>
-      <a href="bimat.html" target="_blank" class="btn btn-secondary" id="secretBtn">
-        <i class="fa-solid fa-lock"></i> Bí mật của anh
-      </a>
-    </div>
-
-    <div class="author-info">
-      <div class="author-name" style="color:var(--accent);font-weight:700">Design by: @Nguyễn Thanh Sang (阮清尚)</div>
-      <div class="author-subtext">设计由: @阮清尚</div>
+  <div class="chat-bubble">
+    <span id="typedText"></span>
+    <div id="dots" style="margin-left:8px">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
   </div>
 
+  <div class="btns-group">
+     <a href="profile.html" class="btn btn-primary"><i class="fa-solid fa-heart"></i> Xem Profile Anh</a>
+    <a href="https://www.facebook.com/messages/t/nguyenthanhsang70" target="_blank" class="btn btn-outline">
+      <i class="fa-brands fa-facebook-messenger" style="color: #0084ff;"></i> Nhắn Messenger
+    </a>
+   <a href="bimat.html" class="btn btn-outline"><i class="fa-solid fa-lock" style="color: #f1c40f;"></i> Bí mật của anh</a>
+  </div>
+
+  <div class="footer">
+    <div style="color:var(--accent); font-weight:700;">Design by: @Nguyễn Thanh Sang (阮清尚)</div>
+    <div style="color:var(--text-sub); opacity: 0.6;">设计由: @阮清尚</div>
+  </div>
+</div>
+
 <script>
-const rand = (a,b) => Math.random() * (b-a) + a;
+function createHeart() {
+  const container = document.getElementById('heartContainer');
+  if(!container) return;
+  const heart = document.createElement('i');
+  heart.className = 'fa-solid fa-heart heart-bg';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+  heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  heart.style.opacity = Math.random() * 0.5;
+  container.appendChild(heart);
+  setTimeout(() => heart.remove(), 10000);
+}
+setInterval(createHeart, 800);
 
 const sentences = [
   "Em có thích những gì anh làm không?",
-  "Nếu có thích, thì đừng im lặng nữa nhé.",
+  "Nếu có, thì đừng im lặng nữa nhé.",
   "Nhắn tin cho anh đi nào! ❤️",
-  "Nhắn tin cho anh đi, chờ em nãy giờ rồi nè…"
+  "Anh vẫn đang đợi em..."
 ];
+
 let typedEl = document.getElementById('typedText');
 let dots = document.getElementById('dots');
 let iSentence = 0, iChar = 0;
 
-function typeSentence(){
+function type() {
+  if(!typedEl) return;
   dots.style.display = 'inline-block';
-  const s = sentences[iSentence];
-  if(iChar < s.length){
-    typedEl.innerHTML = s.slice(0, iChar+1).replace(/\n/g,'<br>');
+  let s = sentences[iSentence];
+  if (iChar < s.length) {
+    typedEl.innerHTML += s.charAt(iChar);
     iChar++;
-    setTimeout(typeSentence, 40 + rand(-10,60));
+    setTimeout(type, 60);
   } else {
-    dots.style.display='none';
-    setTimeout(()=> {
-      iSentence = (iSentence+1) % sentences.length;
-      iChar = 0;
-      backspace();
-    }, 1800);
+    dots.style.display = 'none';
+    setTimeout(erase, 2500);
   }
 }
-function backspace(){
-  const s = sentences[iSentence===0?sentences.length-1:iSentence-1];
-  if(typedEl.innerHTML.replace(/<br>/g,'\n').length > 0){
-    let cur = typedEl.innerHTML.replace(/<br>/g, '\n');
-    typedEl.innerHTML = cur.slice(0, -1).replace(/\n/g,'<br>');
-    setTimeout(backspace, 14 + rand(0,40));
+
+function erase() {
+  if (typedEl.innerHTML.length > 0) {
+    typedEl.innerHTML = typedEl.innerHTML.slice(0, -1);
+    setTimeout(erase, 30);
   } else {
-    setTimeout(typeSentence, 180);
+    iSentence = (iSentence + 1) % sentences.length;
+    iChar = 0;
+    setTimeout(type, 500);
   }
 }
-window.addEventListener('load', () => setTimeout(typeSentence, 600));
 
-/* Particles trái tim bay lên */
-const particles = document.getElementById('particles');
-function createParticle(){
-  const el = document.createElement('div');
-  const size = rand(10,28);
-  el.style.position = 'absolute';
-  el.style.left = `${rand(4,96)}%`;
-  el.style.bottom = '-40px';
-  el.style.fontSize = `${size}px`;
-  el.style.opacity = rand(.45,1);
-  el.style.transform = `rotate(${rand(-25,25)}deg)`;
-  el.style.pointerEvents = 'none';
-  el.innerText = ['💖','💗','💕','❤︎'][Math.floor(rand(0,4))];
-  particles.appendChild(el);
-  const duration = rand(4500,9500);
-  el.animate([
-    { transform: `translateY(0) scale(0.6)`, opacity: el.style.opacity },
-    { transform: `translateY(-110vh) scale(1)`, opacity:0 }
-  ], { duration, easing:'linear' });
-  setTimeout(()=> el.remove(), duration+80);
-}
-setInterval(createParticle, 420);
+window.onload = type;
 
-/* Click bùng nổ trái tim */
+// ĐÃ SỬA LỖI TẠI ĐÂY
 document.addEventListener('click', (e) => {
-  for(let i=0;i<6;i++){
-    const b = document.createElement('div');
-    b.className = 'burst';
-    b.style.left = e.clientX + 'px';
-    b.style.top = e.clientY + 'px';
-    b.style.background = ['#ff9a9e','#ffd1e8','#fff'][Math.floor(rand(0,3))];
-    document.body.appendChild(b);
-    setTimeout(()=> b.remove(), 900);
+  for(let i=0; i<6; i++) {
+    const icon = document.createElement('i');
+    icon.className = 'fa-solid fa-heart';
+    icon.style.position = 'fixed';
+    icon.style.left = e.clientX + 'px';
+    icon.style.top = e.clientY + 'px';
+    // Sửa lỗi: bao quanh var(--accent) bằng dấu nháy đơn
+    icon.style.color = 'var(--accent)'; 
+    icon.style.pointerEvents = 'none';
+    icon.style.zIndex = '100';
+    document.body.appendChild(icon);
+
+    const angle = (i / 6) * Math.PI * 2;
+    icon.animate([
+      { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle)*60}px, ${Math.sin(angle)*60}px) scale(0)`, opacity: 0 }
+    ], { duration: 800, easing: 'ease-out' });
+
+    setTimeout(() => icon.remove(), 800);
   }
 });
-
-/* Nút Messenger nhúc nhích khi để lâu không tương tác */
-const messengerBtn = document.getElementById('messengerBtn');
-let idle = 0;
-setInterval(()=> {
-  idle++;
-  if(idle===12){
-    messengerBtn.animate([{ transform:'translateY(0)'},{ transform:'translateY(-6px)'},{ transform:'translateY(0)' }], { duration:800, easing:'ease-out' });
-  }
-}, 1000);
-['click','mousemove','keydown','touchstart'].forEach(ev => window.addEventListener(ev, ()=> idle=0));
-
 </script>
 </body>
 </html>
